@@ -1,0 +1,63 @@
+﻿@model School.Models.Student
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2  class="text-center font-weight-bold">Öğrenci Bilgileri</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            <label class="control-label col-md-2">Öğrenci İsmi</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            <label class="control-label col-md-2">Öğrenci Soyismi</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Lname)
+        </dd>
+
+        <dt>
+            <label class="control-label col-md-2">Öğrenci Sınıfı</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Class)
+        </dd>
+
+        <dt>
+            <label class="control-label col-md-2">Okul Numarası</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SchoolNumber)
+        </dd>
+        <dt>
+            <label class="control-label col-md-2">Öğretmeninin Bilgileri</label>
+        </dt>
+
+        <dd>
+            <label>İsim : </label>
+            @Html.DisplayFor(model => model.Teacher.TName)<br />
+            <label>Soyisim : </label>
+            @Html.DisplayFor(model => model.Teacher.TLname)<br />
+            <label>Branş : </label>
+            @Html.DisplayFor(model => model.Teacher.Branch)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Düzenle", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Geri Dön", "Index")
+</p>
+
+

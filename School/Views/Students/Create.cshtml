@@ -1,0 +1,81 @@
+﻿@model School.Models.Student
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="text-center font-weight-bold">Öğrenci Ekle</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    <h4 class="text-center">Öğrenci Bilgileri</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        <label class="control-label col-md-2">Öğrenci İsmi</label>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2">Öğrenci Soyismi</label>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Lname, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Lname, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2">Öğrenci Sınıfı</label>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Class, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Class, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2">Okul Numarası</label>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.SchoolNumber, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.SchoolNumber, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2">Öğretmen Id</label>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.TeacherId, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.TeacherId, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="form-group" role="group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Ekle" class=" btn btn-secondary btn-primary" />
+                <input type="submit" value="Öğrenci Listesi" formaction="Index" class="btn btn-secondary btn-primary" />
+            </div>
+        </div>
+    </div>
+
+    @*<div class="form-group">
+            <label for="Student">Select list:</label>
+            <select class="form-control" id="Student">
+                @foreach (var student in ViewBag.students as List<School.Models.Student>)
+                {
+                    <option>@student.Teacher.TName</option>
+                }
+            </select>
+        </div>*@
+</div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

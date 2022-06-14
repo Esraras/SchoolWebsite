@@ -1,0 +1,45 @@
+﻿@model IEnumerable<School.Models.Teacher>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2  class="text-center font-weight-bold">Öğretmenler Listesi</h2><br />
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            <label class="control-label col-md-2">Öğretmen İsmi</label>
+        </th>
+        <th>
+            <label class="control-label col-md-2">Öğretmen Soyismi</label>
+        </th>
+        <th>
+            <label class="control-label col-md-2">Öğretmen Branşı</label>
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TLname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Branch)
+        </td>
+        <td>
+            @Html.ActionLink("Düzenle", "Edit", new { id=item.TeacherId }) |
+            @Html.ActionLink("Öğrencileri", "Details", new { id=item.TeacherId }) |
+            @Html.ActionLink("Sil", "Delete", new { id=item.TeacherId })
+        </td>
+    </tr>
+}
+
+</table>

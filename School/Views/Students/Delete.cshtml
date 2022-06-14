@@ -1,0 +1,66 @@
+﻿@model School.Models.Student
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2  class="text-center font-weight-bold">Öğrenci Silme Ekranı</h2>
+
+<h3>Bu öğrenciyi silmek istediğinizden emin misiniz?</h3>
+<div>
+    <h4 >Öğrenci Bilgileri</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            <label class="control-label col-md-2">Öğrenci İsmi</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            <label class="control-label col-md-2">Öğrenci Soyismi</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Lname)
+        </dd>
+
+        <dt>
+            <label class="control-label col-md-2">Öğrenci Sınıfı</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Class)
+        </dd>
+
+        <dt>
+            <label class="control-label col-md-2">Okul Numarası</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SchoolNumber)
+        </dd>
+
+        <dt>
+            <label class="control-label col-md-2">Öretmeninin İsmi</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Teacher.TName)
+        </dd>
+
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Sil" class="btn btn-primary" /> |
+            @Html.ActionLink("Geri Dön", "Index")
+        </div>
+    }
+</div>
